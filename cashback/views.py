@@ -25,6 +25,7 @@ def footer(request):
     return render(request, 'cashback/footer.html')
 
 
+@login_required(login_url='login')
 def cashback(request):
     if request.user.is_admin:
         # if request.method =='POST':
@@ -34,6 +35,7 @@ def cashback(request):
         return redirect('error')
 
 
+@login_required(login_url='login')
 def withdraw(request):
     if request.user.is_admin:
         # if request.method =='POST':
@@ -43,6 +45,7 @@ def withdraw(request):
         return redirect('error')
 
 
+@login_required(login_url='login')
 def withdraw2(request):
     if request.user.is_admin:
 
@@ -89,6 +92,7 @@ def error(request):
     return render(request, 'cashback/error.html')
 
 
+@login_required(login_url='login')
 def cashbackform(request):
     if request.method == 'POST':
         name1 = request.POST['name1']
@@ -107,6 +111,7 @@ def cashbackform(request):
         return redirect('/')
 
 
+@login_required(login_url='login')
 def feedbackform(request):
     if request.method == 'POST':
         ratingg = request.POST['ratingg']
@@ -125,6 +130,7 @@ def feedbackform(request):
         return redirect('/')
 
 
+@login_required(login_url='login')
 def withdrawform(request):
 
     if request.method == 'POST':
@@ -136,6 +142,7 @@ def withdrawform(request):
         return redirect('/')
 
 
+@login_required(login_url='login')
 def withdrawform2(request):
 
     if request.method == 'POST':
