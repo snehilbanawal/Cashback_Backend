@@ -1,0 +1,70 @@
+{%extends 'base.html'%} {%load static%}
+<!--  -->
+{%block content%}
+
+<style>
+  .profile-section {
+    min-height: 80vh;
+    margin-top: 12vh;
+  }
+  .hero-header {
+    margin-bottom: 1rem;
+  }
+  .hero-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 0.5rem;
+  }
+  .detail-group {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(197, 197, 197, 0.565);
+    margin-bottom: 0.75rem;
+  }
+  .detail-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #11111190;
+    margin-bottom: 0.25rem;
+  }
+  .detail-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--brand-dark);
+  }
+</style>
+
+<section class="profile-section">
+  <div class="container">
+    <div class="hero-header">
+      <h1>Hello, {{user.first_name}}!</h1>
+    </div>
+    <div class="profile-body">
+      <div class="detail-group">
+        <div class="detail-title">First Name</div>
+        <p class="detail-value">{{user.first_name}}</p>
+      </div>
+      <div class="detail-group">
+        <div class="detail-title">Last Name</div>
+        <p class="detail-value">{{user.last_name}}</p>
+      </div>
+      <div class="detail-group">
+        <div class="detail-title">Username</div>
+        <p class="detail-value">{{user.username}}</p>
+      </div>
+      <div class="detail-group">
+        <div class="detail-title">Email</div>
+        <p class="detail-value">{{user.email}}</p>
+      </div>
+      <div class="detail-group">
+        <div class="detail-title">Phone No.</div>
+        <p class="detail-value">{{user.phone_number}}</p>
+      </div>
+      <div class="detail-group">
+        <div class="detail-title">Cashback Balance</div>
+        <p class="detail-value">{{user.cashback}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock%}

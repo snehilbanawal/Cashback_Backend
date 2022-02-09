@@ -1,0 +1,61 @@
+<style>
+  .section-footer {
+    background-color: #000;
+  }
+  .footer-contact {
+    color: #ffffff80;
+  }
+  .footer-developed{
+    color: #ffffff50 !important;
+  }
+  .footer-developed a{
+    color: var(--brand-light) !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .footer-developed a:hover{
+    opacity: 0.8;
+  }
+  @media screen and (max-width: 768px) {
+    .footer-developed, .footer-logo{
+      text-align: center !important;
+      margin: 8px 0;
+    }
+    .footer-logo a{
+      font-weight: 600 !important;
+      font-size: 1.5rem !important;
+    }
+  }
+</style>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="section-footer brand-dark">
+  <div class="container">
+    <section
+      class="footer-bottom row d-flex align-items-center justify-content-between"
+    >
+      <div class="col-lg col-md-12 col-sm-12 footer-logo">
+        <a
+          href="{% url 'home' %}"
+          class="brand-wrap text-white"
+          style="font-size: 18px; font-weight: bold; letter-spacing: 1px"
+        >
+          ARMOUR SPORTS
+        </a>
+        <!-- brand-wrap.// -->
+      </div>
+      <div
+        class="col-lg-6 col-md-12 text-md-center footer-contact d-flex align-items-center justify-content-center"
+      >
+        <span class="px-2">abcd.efg@xyz.com</span>
+        <span class="px-2">+91-99999-XXXXX</span>
+      </div>
+      <div class="col-lg col-md-12 text-right footer-developed">
+        Developed by
+        <a href="http://cybercycloid.com/">Cybercycloid</a>
+      </div>
+    </section>
+  </div>
+  <!-- //container -->
+</footer>
+<!-- ========================= FOOTER END // ========================= -->

@@ -1,0 +1,35 @@
+<ul class="list-group">
+    {%ifequal request.path '/accounts/myorders/'%}
+    <a class="list-group-item active" href="/accounts/myorders/"> 
+        My Order History
+    </a> {%else%}
+    <a class="list-group-item" href="/accounts/myorders/"> 
+        My Order History
+    </a> {%endifequal%}
+    <!--  -->
+    {%ifequal request.path '/accounts/mypayments/'%}
+    <a class="list-group-item active" href="/accounts/mypayments/"> 
+        My Payments
+    </a> {%else%}
+    <a class=" list-group-item " href="/accounts/mypayments/ "> 
+        My Payments
+    </a> {%endifequal%} {%ifequal request.path '/accounts/myprofile/'%}
+    <a class="list-group-item active " href="/accounts/myprofile/ "> 
+        My Profile 
+    </a> {%else%}
+    <a class="list-group-item " href="/accounts/myprofile/ "> 
+        My Profile 
+    </a> {%endifequal%}{%ifequal request.path '/accounts/useredit/'%}
+    <a class="list-group-item active " href="/accounts/useredit/ "> 
+        Edit Profile
+    </a> {%else%}
+    <a class="list-group-item " href="/accounts/useredit/ "> 
+        Edit Profile
+    </a> {%endifequal%} {%ifequal request.path '/accounts/password/'%}
+    <a class="list-group-item active " href="/accounts/password/ "> 
+        Change Password
+    </a> {%else%}
+    <a class="list-group-item " href="/accounts/password/ "> 
+        Change Password
+    </a> {%endifequal%}
+</ul>

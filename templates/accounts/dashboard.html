@@ -1,0 +1,224 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+    .title-text {
+        margin-bottom: 20px;
+    }
+    
+    .list-group-item {
+        color: var(--brand-dark);
+    }
+    
+    .list-group-item.active {
+        background-color: var(--brand-red);
+        border-color: var(--brand-red);
+        color: var(--brand-light);
+    }
+    
+    .card-header,
+    .card-body {
+        padding: 12px 18px !important;
+    }
+    
+    .card-header p,
+    .order-details p,
+    .order-amount p {
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--brand-dark);
+        margin-bottom: 0px !important;
+    }
+    
+    .card-header span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--brand-dark);
+    }
+    
+    .card-body .row {
+        margin: 0 !important;
+    }
+    
+    .card-body .row .col-md-8,
+    .card-body .row .col-md-4 {
+        padding: 0 !important;
+    }
+    
+    .row .col-md-8 h6,
+    .row .col-md-4 h6 {
+        color: #1d1d1d80;
+    }
+    
+    .order-details p,
+    .order-amount p {
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    
+    .order-details p span,
+    .order-amount p span {
+        font-weight: 400;
+    }
+    
+    .table-responsive {
+        overflow-x: hidden !important;
+        border-top: 1px solid #00000020;
+    }
+    
+    .table-responsive .row {
+        border-top: 1px solid #00000020;
+        color: var(--brand-dark);
+        margin: 0 !important;
+        padding: 12px 18px;
+    }
+    
+    .table-responsive .row .col-2,
+    .table-responsive .row .col-4,
+    .table-responsive .row .col-6 {
+        padding: 0 !important;
+    }
+    
+    .table-responsive .row .col-6 p {
+        margin: 0 !important;
+        font-weight: 500;
+    }
+    
+    .table-responsive .row .col-6 .product-name {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .row .col-6 .product-price,
+    .row .col-6 .product-quantity {
+        color: var(--brand-red);
+        font-weight: 500;
+    }
+    
+    .row .col-4 .btn {
+        margin-right: 8px;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .dashboard-section.padding-y {
+            padding-top: 10px !important;
+        }
+        .card-header {
+            display: flex;
+            flex-direction: column;
+        }
+        .card-header,
+        .card-body,
+        .table-responsive .row {
+            padding: 6px 10px !important;
+        }
+        .card-body .row .col-md-4 {
+            margin-top: 8px;
+        }
+        .row .product-image img {
+            height: 40px !important;
+            width: 40px !important;
+        }
+        .table-responsive .row .col-6 {
+            max-width: 40%;
+            font-size: 12px;
+        }
+        .table-responsive .row .col-6 .product-name {
+            font-size: 16px;
+        }
+        .table-responsive .col-4 {
+            max-width: 40%;
+            flex-direction: column;
+            align-items: flex-start !important;
+            justify-content: space-between;
+        }
+        .table-responsive .col-4 .btn {
+            font-size: 12px;
+            padding: 4px 8px !important;
+        }
+    }
+</style>
+<section class="section-content padding-y dashboard-section">
+
+    {% include 'includes/alerts.html' %}
+    <div class="container">
+        <h2 class="title-text">Hello, <span>Username</span>!</h2>
+        <div class="row">
+            <aside class="col-md-3 mb-4">
+                <!--   SIDEBAR   -->
+                {%include 'includes/sidebar.html'%}
+                <br>
+                <a class="btn btn-outline-danger btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a>
+                <!--   SIDEBAR .//END   -->
+            </aside>
+            <main class="col-md-9">
+                <!-- We can run a for loop here from order history -->
+                <article class="card">
+                    <header class="card-header">
+                        <p class="d-inline-block mr-3">Order ID: 6123456789</p>
+                        <span>Order Date: 16 December 2018</span>
+                    </header>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6>Delivery to</h6>
+                                <div class="order-details">
+                                    <p>Name: <span class="order-username">Username</span></p>
+                                    <p>Phone: <span class="order-contact">+91-9999999999</span></p>
+                                    <p>Location: <span class="order-location">Home number, Building name, Street 123,  Tashkent, UZB</span></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Payment</h6>
+                                <div class="order-amount">
+                                    <p>Subtotal: ₹<span class="order-total">1000</span></p>
+                                    <p>Delivery fees: ₹<span class="order-shipping">50</span></p>
+                                    <p>Grand total: ₹<span class="order-final-total">1050</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row.// -->
+                    </div>
+                    <!-- card-body .// -->
+                    <div class="table-responsive">
+                        <!-- We can run a for loop for ordered items-->
+                        <div class="row">
+                            <div class="col-2 product-image">
+                                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" class="border" style="height: 80px; width: 80px; object-fit: cover">
+                            </div>
+                            <div class="col-6 d-flex justify-content-center flex-column">
+                                <p class="product-name">Football</p>
+                                <var class="product-price">₹ 145</var>
+                                <p>Qty: <span class="product-quantity">1</span></p>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <a href="#" class="btn btn-danger">Track order</a>
+                                <a href="#" class="btn btn-outline-danger">Details</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 product-image">
+                                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" class="border" style="height: 80px; width: 80px; object-fit: cover">
+                            </div>
+                            <div class="col-6 d-flex justify-content-center flex-column">
+                                <p class="product-name">Football</p>
+                                <var class="product-price">₹ 145</var>
+                                <p>Qty: <span class="product-quantity">1</span></p>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <a href="#" class="btn btn-danger">Track order</a>
+                                <a href="#" class="btn btn-outline-danger">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- table-responsive .end// -->
+                </article>
+                <!-- order-group.// -->
+            </main>
+        </div>
+        <!-- row.// -->
+    </div>
+
+
+</section>
+
+{% endblock %}

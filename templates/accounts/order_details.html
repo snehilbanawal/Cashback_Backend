@@ -1,0 +1,61 @@
+{%extends 'accounts/dashboard-base.html'%} {%load static%}
+<!--  -->
+{%block main%}
+<!--  -->
+<article class="card">
+    <header class="card-header">
+        <p class="d-inline-block mr-3">Order ID: {{order.id}}</p>
+        <span>Order Date: {{order.created_at}}</span>
+    </header>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h6>Delivery to</h6>
+                <div class="order-details">
+                    <p>Name: <span class="order-username">{{order.user.username}}</span></p>
+                    <p>Phone: <span class="order-contact">+91-{{order.phone}}</span></p>
+                    <p>Location: <span class="order-location">{{order.address_line_1}}, {{order.address_line_2}},  {{order.city}}, {{order.state}}</span></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h6>Payment</h6>
+                <div class="order-amount">
+                    <p>Subtotal: ₹<span class="order-total">{{order.order_total}}</span></p>
+                    <p>Tax: ₹<span class="order-shipping">{{order.tax}}</span></p>
+                    <p>Amount Paid: ₹<span class="order-final-total">{{order.payment.amount_paid}}</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- row.// -->
+    </div>
+    <!-- card-body .// -->
+    <div class="table-responsive">
+        <!-- We can run a for loop for ordered items-->
+        {%for item in products%}
+        <div class="row">
+            <div class="col-2 product-image">
+                <img src="{{item.product.images.url}}" class="border" style="height: 80px; width: 80px; object-fit: cover">
+            </div>
+            <div class="col-6 d-flex justify-content-center flex-column">
+                <p class="product-name">{{item.product.product_name}}</p>
+                <var class="product-price">₹ {{item.product.price}}</var>
+                <p>Qty: <span class="product-quantity">{{item.quantity}}</span></p>
+            </div>
+            <div class="col-4 d-flex align-items-center">
+                <a href="#" class="btn btn-danger">Track order</a>
+                <a href="#" class="btn btn-outline-danger">Details</a>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <!-- table-responsive .end// -->
+</article>
+<!-- order-group.// -->
+</main>
+</div>
+<!-- row.// -->
+</div>
+
+
+</section>
+{%endblock%}

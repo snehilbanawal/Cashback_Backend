@@ -1,0 +1,51 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css1/global.css' %}" />
+<link rel="stylesheet" href="{% static 'css1/nav.css' %}" />
+
+<style>
+  .nav-container {
+    height: 100%;
+  }
+  .nav-logo {
+    height: 70%;
+  }
+  .nav-logo a {
+    height: 100%;
+  }
+  .nav-logo a img {
+    height: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .nav-logo {
+      height: 50%;
+    }
+  }
+</style>
+
+<nav class="">
+  <div class="container nav-container">
+    <div class="nav-logo">
+      <a href="{% url 'home' %}">
+        <img src="http://www.tngclinic.com/images/logo.jpg" alt="Logo" />
+      </a>
+    </div>
+    <div class="nav-dropdown">
+      <div class="nav-dropdown-button">
+        <span class="btn btn-outline">
+          <i class="fas fa-user"></i>
+        </span>
+      </div>
+      <div class="nav-dropdown-content">
+        {% if user.id is None %}
+        <a href="{% url 'login' %}" class="btn btn-outline">LogIn</a>
+        <a href="{% url 'register' %}" class="btn btn-outline">SignUp</a>
+        {%else%}
+        <a href="{% url 'userprofile' %}" class="btn btn-outline">My account</a>
+        <a href="{% url 'withdraw' %}" class="btn btn-outline">Redeem</a>
+        <a href="{% url 'logout' %}" class="btn btn-outline">LogOut</a>
+        {%endif%}
+        <a href="{% url 'cashback' %}" class="btn btn-outline">Cashback</a>
+      </div>
+    </div>
+  </div>
+</nav>

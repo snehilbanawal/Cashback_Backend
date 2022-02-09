@@ -1,0 +1,61 @@
+{%extends 'accounts/dashboard-base.html'%} {%load static%}
+<!--  -->
+{%block main%}
+<!--  -->
+{%for payment in payments%}
+<article class="card">
+    <header class="card-header">
+        <p class="d-inline-block mr-3"> Payment Order ID: <a href='/accounts/orders/{{payment.order_id}}/'>{{payment.order_id}}</a></p>
+        <span>Payment Date: {{payment.created_at}}</span>
+    </header>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h6>Payment by</h6>
+                <div class="order-details">
+                    <p>Name: <span class="order-username">{{payment.user.username}}</span></p>
+                    <p>Order Id: <span class="order-contact">{{payment.order_id}}</span></p>
+                    <p>Payment Id: <span class="order-location">{{payment.payment_id}}</span></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h6>Payment</h6>
+                <div class="order-amount">
+                    <p>Amount Paid: ₹<span class="order-final-total">{{payment.amount_paid}}</span></p>
+                    {% if payment.is_verified %}
+                    <p>Verified <span class="order-final-total"><i class="fa fa-check" style="color:green" aria-hidden="true"></i></span></p>
+                    {% else %}
+                    <p>Verified <span class="order-final-total"><i class="fa fa-times" style="color:red" aria-hidden="true"></i></span></p>
+                    {% endif %}
+                </div>
+
+
+
+
+            </div>
+        </div>
+        <!-- row.// -->
+    </div>
+    <!-- card-body .// -->
+    <div class="table-responsive">
+        <!-- We can run a for loop for ordered items-->
+        {%for item in order.products%}
+        <div class="row">
+            <div class="col-2 product-image">
+                <img src="{{item.product.images}}" class="border" style="height: 80px; width: 80px; object-fit: cover">
+            </div>
+            <div class="col-6 d-flex justify-content-center flex-column">
+                <p class="product-name">{{item.product.product_name}}</p>
+                <var class="product-price">₹ {{item.product.price}}</var>
+                <p>Qty: <span class="product-quantity">{{item.quantity}}</span></p>
+            </div>
+            <div class="col-4 d-flex align-items-center">
+                <a href="#" class="btn btn-danger">Track order</a>
+                <a href="#" class="btn btn-outline-danger">Details</a>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <!-- table-responsive .end// -->
+</article>
+{%endfor%} {%endblock%}

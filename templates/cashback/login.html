@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css1/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css1/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'css1/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css1/login.css' %}" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .login-section {
+        margin-top: 12vh;
+      }
+      .hero-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--brand-dark);
+        margin-bottom: 0.5rem;
+      }
+      .login-form .btn.btn-outline {
+        margin: 1rem 0;
+      }
+      .login-bottom {
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+      .login-bottom a {
+        border-bottom: 1px solid var(--brand-primary);
+        color: var(--brand-primary);
+      }
+      .login-bottom a:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar starts here -->
+    {% include 'cashback/navbar.html' %}
+    <!-- Navbar ends here -->
+
+    <!-- Login Section starts here -->
+    <section class="login-section">
+      <div class="container">
+        {% if request.GET.command == 'verification' %}
+        <div
+          class="container mx-auto alert alert-info text-center"
+          role="alert"
+          style="max-width: 1024px; margin-top: 100px"
+        >
+          Thank you for registering with us. We have sent you a verification
+          email to your email address [{{ request.GET.email }}]
+          <br />
+          <br />
+          Already verified?
+          <a href="{% url 'login' %}">Login</a>
+        </div>
+        {% else %}
+        <div class="hero-header">
+          <h1>Log In</h1>
+        </div>
+        <form action="{% url 'login' %}" method="POST" class="login-form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email Address"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              name="password"
+            />
+          </div>
+          <input type="submit" value="Login" class="btn btn-outline" />
+        </form>
+        <div class="login-bottom">
+          Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    <!-- Login Section ends here -->
+
+    <!-- Footer Starts Here -->
+    {% include 'cashback/footer.html' %}
+    <!-- Footer Starts Here -->
+
+    <!-- Scripts -->
+    <script src="{% static 'js1/app.js' %}"></script>
+    <script src="{% static 'js1/animations.js' %}"></script>
+  </body>
+</html>

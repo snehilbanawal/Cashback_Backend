@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TnG Clinic</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css1/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css1/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'css1/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css1/home.css' %}" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .rating-emojis label {
+        margin-right: 1rem !important;
+      }
+      .rating-input label {
+        margin-right: 1rem !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar starts here -->
+    {% include 'cashback/navbar.html'%}
+    <!-- Navbar ends here -->
+
+    <!-- Hero Section starts here -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-header">
+          <h1>Your feedback</h1>
+          <p>
+            Your opinion is important to us. This way we can keep improving our
+            services.
+          </p>
+        </div>
+        <form action="{% url 'feedbackform' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label>How would you rate our <span>services</span>?</label>
+            <div class="rating-emojis">
+              <label for="rating1">
+                <input
+                  type="radio"
+                  name="ratingg"
+                  id="rating1"
+                  value="1"
+                  required
+                />
+                <i class="far fa-tired"></i>
+              </label>
+              <label for="rating2">
+                <input
+                  type="radio"
+                  name="ratingg"
+                  id="rating2"
+                  value="2"
+                  required
+                />
+                <i class="far fa-frown"></i>
+              </label>
+              <label for="rating3">
+                <input
+                  type="radio"
+                  name="ratingg"
+                  id="rating3"
+                  value="3"
+                  required
+                />
+                <i class="far fa-meh"></i>
+              </label>
+              <label for="rating4">
+                <input
+                  type="radio"
+                  name="ratingg"
+                  id="rating4"
+                  value="4"
+                  required
+                />
+                <i class="far fa-smile"></i>
+              </label>
+              <label for="rating5">
+                <input
+                  type="radio"
+                  name="ratingg"
+                  id="rating5"
+                  value="5"
+                  required
+                />
+                <i class="far fa-grin-hearts"></i>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>
+              Will you <span>recommend</span> our services to your friends and
+              family?
+            </label>
+            <div class="rating-input">
+              <input
+                type="radio"
+                id="yes"
+                name="recommendation1"
+                value="Yes"
+                required
+              />
+              <label for="yes">Yes</label>
+
+              <input
+                type="radio"
+                id="maybe"
+                name="recommendation1"
+                value="Maybe"
+                required
+              />
+              <label for="maybe">Maybe</label>
+
+              <input
+                type="radio"
+                id="no"
+                name="recommendation1"
+                value="No"
+                required
+              />
+              <label for="no">No</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>
+              Did our service meet your <span>expectations</span>?
+            </label>
+            <div class="rating-input">
+              <!-- <input type="text" class="form-control" id="recommend" required /> -->
+              <input
+                type="radio"
+                id="yes"
+                name="service1"
+                value="Yes"
+                required
+              />
+              <label for="yes">As expected</label>
+              <input
+                type="radio"
+                id="maybe"
+                name="service1"
+                value="Maybe"
+                required
+              />
+              <label for="maybe">Somewhat</label>
+
+              <input type="radio" id="no" name="service1" value="No" required />
+              <label for="no">Not at all</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label
+              >If you have any other <span>feedback</span>, please let us know
+              here?
+            </label>
+            <textarea
+              name="message1"
+              id="experience"
+              class="form-control"
+            ></textarea>
+          </div>
+          <input type="submit" value="Thank You" class="btn btn-outline" />
+        </form>
+      </div>
+    </section>
+    <!-- Hero Section starts here -->
+
+    <!-- Footer Starts Here -->
+    {% include 'cashback/footer.html' %}
+    <!-- Footer Starts Here -->
+
+    <!-- Scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="{% static 'js1/app.js' %}"></script>
+    <script src="{% static 'js1/animations.js' %}"></script>
+  </body>
+</html>
