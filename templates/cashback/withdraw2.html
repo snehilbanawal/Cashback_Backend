@@ -1,7 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,72 +15,42 @@
     <link rel="stylesheet" href="{% static 'css1/cashback.css' %}" />
 
     <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Navbar starts here -->
     {% include 'cashback/navbar.html' %}
     <!-- Navbar ends here -->
 
     <!-- Main content starts here -->
     <section class="cashback-section">
-      <div class="container">
-        <div class="cashback-header">
-          <h1>Withdraw Panel</h1>
-        </div>
-        <form action="{% url 'withdrawform2' %}" method="POST">
-          {% csrf_token %}
-          <!-- user dropdown - user id(email)
+        <div class="container">
+            <div class="cashback-header">
+                <h1>Withdraw Panel</h1>
+            </div>
+            <form action="{% url 'withdrawform2' %}" method="POST">
+                {% csrf_token %}
+                <!-- user dropdown - user id(email)
             No. of products
             Cashback amount
             Submit button -->
-          <div class="form-group" id="select-user-input">
-            <label>Select User:</label>
-            <input
-              type="text"
-              name="name1"
-              class="form-control"
-              value="{{ user.email }}"
-              id="select-user"
-              placeholder="Enter User E-mail ID"
-              required
-              readonly
-            />
-          </div>
-          <div class="form-group">
-            <label>Cashback Amount:</label>
-            <input
-              type="number"
-              class="form-control"
-              id="cashback-amount"
-              value="{{ user.cashback }}"
-              name="amount1"
-              placeholder="Enter Cashback Amount"
-              required
-              readonly
-            />
-          </div>
-          <div class="form-group">
-            <label>Amount to be withdrawn:</label>
-            <input
-              type="number"
-              class="form-control"
-              id="cashback-amount"
-              name="amount2"
-              placeholder="Enter Cashback Amount"
-              required
-            />
-          </div>
-          <input type="submit" value="Submit" class="btn btn-outline" />
-        </form>
-      </div>
+                <div class="form-group" id="select-user-input">
+                    <label>Select User:</label>
+                    <input type="text" name="name1" class="form-control" value="{{ use.email }}" id="select-user" placeholder="Enter User E-mail ID" required readonly />
+                </div>
+                <div class="form-group">
+                    <label>Cashback Amount:</label>
+                    <input type="number" class="form-control" id="cashback-amount" value="{{ use.cashback }}" name="amount1" placeholder="Enter Cashback Amount" required readonly />
+                </div>
+                <div class="form-group">
+                    <label>Amount to be withdrawn:</label>
+                    <input type="number" class="form-control" id="cashback-amount" name="amount2" placeholder="Enter Cashback Amount" required />
+                </div>
+                <input type="submit" value="Submit" class="btn btn-outline" />
+            </form>
+        </div>
     </section>
     <!-- Main content ends here -->
 
@@ -88,14 +59,10 @@
     <!-- Footer Starts Here -->
 
     <!-- Scripts -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js1/cashback.js' %}"></script>
     <script src="{% static 'js1/app.js' %}"></script>
     <script src="{% static 'js1/animations.js' %}"></script>
-  </body>
+</body>
+
 </html>
